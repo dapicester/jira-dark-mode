@@ -1,20 +1,5 @@
-document.documentElement.style.setProperty('--ds-background-default', '#112');
-document.documentElement.style.setProperty('--ds-background-PageTopElements', '#112');
-
-document.documentElement.style.setProperty('--ds-background-caseText', '#fff');
-document.documentElement.style.setProperty('--ds-background-caseElements', '#334');
-document.documentElement.style.setProperty('--ds-background-caseElementsBorder', '#112');
-document.documentElement.style.setProperty('--ds-background-caseElementCaseNumberFg', '#fff');
-document.documentElement.style.setProperty('--ds-background-caseElementCaseNumberBg', '#0052cc');
-document.documentElement.style.setProperty('--ds-background-selectCaseElement', '#0052cc');
-
-document.documentElement.style.setProperty('--ds-background-swimlaneColumns', '#223');
-document.documentElement.style.setProperty('--ds-background-swimLaneGaps', '#112');
-document.documentElement.style.setProperty('--ds-background-swimLaneFixedHeader', '#112');
-
-document.documentElement.style.setProperty('--ds-background-openJiraCase', '#000');
-
 applyStyles()
+// applyCustomProps()
 
 
 let oldHref = document.location.href;
@@ -43,7 +28,39 @@ setInterval(() => {
     applyStyles()
 }, 10000);
 
+function applyCustomProps() {
+    document.documentElement.style.setProperty('--ds-background-default', '#112');
+    document.documentElement.style.setProperty('--ds-background-PageTopElements', '#112');
+
+    document.documentElement.style.setProperty('--ds-background-caseText', '#fff');
+    document.documentElement.style.setProperty('--ds-background-caseElements', '#334');
+    document.documentElement.style.setProperty('--ds-background-caseElementsBorder', '#112');
+    document.documentElement.style.setProperty('--ds-background-caseElementCaseNumberFg', '#fff');
+    document.documentElement.style.setProperty('--ds-background-caseElementCaseNumberBg', '#0052cc');
+    document.documentElement.style.setProperty('--ds-background-selectCaseElement', '#0052cc');
+
+    document.documentElement.style.setProperty('--ds-background-swimlaneColumns', '#223');
+    document.documentElement.style.setProperty('--ds-background-swimLaneGaps', '#112');
+    document.documentElement.style.setProperty('--ds-background-swimLaneFixedHeader', '#112');
+
+    document.documentElement.style.setProperty('--ds-background-openJiraCase', '#000');
+}
+
 function applyStyles() {
+    document.body.style.filter = "invert() hue-rotate(180deg)";
+
+    const imgElementSelectors = 'img, [style*="background"]';
+    const imgElements = document.querySelectorAll(imgElementSelectors)
+    imgElements.forEach(imgElement => {
+        try {
+            imgElement.style.filter = "invert() hue-rotate(180deg)"
+        } catch (error) {
+
+        }
+    })
+
+    return;
+
     // GENERAL
     document.body.style.color = "#fff";
     document.body.style.backgroundColor = "#000";
