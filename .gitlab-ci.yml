@@ -12,5 +12,5 @@ package-firefox:
   image: alpine:latest
   stage: package
   script:
-    - sudo apt install zip
-    - zip -r -FS jira-dark-mode.zip * --exclude '*.git*'
+    - apt-get install zip
+    - cd firefox ; zip -rFS ../jira-dark-mode.zip . * -x '*.git*' -x '*.DS_Store' ; cd ..
